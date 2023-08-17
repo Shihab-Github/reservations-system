@@ -1,4 +1,16 @@
 services:
+  auth: 
+    build:
+      context: .
+      dockerfile: ./apps/auth/Dockerfile
+      target: development
+    command: pnpm run start:dev auth
+    ports:
+      - '3001:3001'
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - MONGODB_URI=mongodb+srv://mahbubrazashihab:mahbubrazashihab@cluster1.9onwmhg.mongodb.net/?retryWrites=true&w=majority
   reservations: 
     build: 
       context: .
@@ -6,7 +18,7 @@ services:
       target: development
     command: pnpm run start:dev reservations
     ports:
-      - "3000:3000"
+      - '3000:3000'
     volumes:
       - .:/usr/src/app
     environment:
