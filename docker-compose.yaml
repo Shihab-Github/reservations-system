@@ -5,21 +5,21 @@ services:
       dockerfile: ./apps/auth/Dockerfile
       target: development
     command: pnpm run start:dev auth
+    env_file:
+      - ./apps/auth/.env
     ports:
       - '3001:3001'
     volumes:
       - .:/usr/src/app
-    environment:
-      - MONGODB_URI=mongodb+srv://mahbubrazashihab:mahbubrazashihab@cluster1.9onwmhg.mongodb.net/?retryWrites=true&w=majority
   reservations: 
     build: 
       context: .
       dockerfile: ./apps/reservations/Dockerfile
       target: development
     command: pnpm run start:dev reservations
+    env_file:
+      - ./apps/reservations/.env
     ports:
       - '3000:3000'
     volumes:
       - .:/usr/src/app
-    environment:
-      - MONGODB_URI=mongodb+srv://mahbubrazashihab:mahbubrazashihab@cluster1.9onwmhg.mongodb.net/?retryWrites=true&w=majority

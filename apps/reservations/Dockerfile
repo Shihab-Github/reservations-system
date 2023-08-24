@@ -1,7 +1,5 @@
 FROM node:alpine As development
 
-ENV MONGODB_URI=${MONGODB_URI}
-
 WORKDIR /usr/src/app
 
 COPY package.json ./
